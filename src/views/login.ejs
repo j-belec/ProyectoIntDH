@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/css/header_footer.css" rel="stylesheet" />
+    <link href="/css/agregar-editar-login-register.css" rel="stylesheet" />
+    <title>Iniciar Sesión</title>
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <main>
+      <section class="container-principal">
+        <h2 class="titulo-seccion">INICIAR SESIÓN</h2>
+
+        <div class="container-titulos-formularios">
+          <a href="/login" class="titulo-formulario-activo"
+            ><h3>Iniciar Sesión</h3></a
+          >
+          <a href="/register" class="titulo-formulario-inactivo"
+            ><h3>Registrarme</h3></a
+          >
+        </div>
+
+        <div class="formularios">
+          <form action="/login" method="POST" id="formulario">
+            <div class="container-titulo-input-small container-email">
+              <div class="container-titulo-icono">
+                <label>Correo Electrónico</label>
+                <i class="fa-solid fa-envelope iconos"></i>
+              </div>
+              <input type="email" id="email" name="email" /><br />
+              <small class="small-valido"
+                >Este campo es obligatorio y debe ser un email valido.</small
+              >
+            </div>
+
+            <div class="container-titulo-input-small container-password">
+              <div class="container-titulo-icono">
+                <label>Contraseña</label>
+                <i class="fa-sharp fa-solid fa-lock iconos"></i>
+              </div>
+              <input type="password" id="password" name="password" /><br />
+              <small class="small-valido">Este campo es obligatorio.</small>
+            </div>
+
+            <div class="container-btn">
+              <p class="mensaje-correcto-invisible">
+                Formulario enviado exitosamente!
+              </p>
+              <p class="mensaje-incorrecto-invisible">
+                Debe llenar el formulario correctamente!
+              </p>
+              <button class="button button-login" type="submit">
+                Iniciar Sesión
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <%- include('./partials/footer') %>
+    <script src="js/login.js"></script>
+  </body>
+</html>

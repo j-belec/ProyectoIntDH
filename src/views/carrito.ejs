@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
+  <link href="/css/home.css" rel="stylesheet" />
+  <link href="/css/header_footer.css" rel="stylesheet" />
+  <link href="/css/carrito.css" rel="stylesheet" />
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('./partials/header') %>
+
+    <main>
+      </br>
+      </br>
+      </br>
+      </br>
+      <h1>
+        Carrito <i class="fa-solid fa-cart-shopping icon-header-carrito"></i>
+      </h1>
+
+      <div class="container">
+        <div class="productos-container">
+          <% if (productos.length == 0){ %>
+            <h1>No hay productos en el carrito!</h1>
+          <% } %>
+          <% for (producto of productos){ %>
+            <div class="producto">
+              <div class="producto-data">
+
+                <div class="descripcion">
+
+    
+
+                  <p class="nombre">
+                    <%= producto.name %>
+                  </p>
+
+                  <p class="color">Color: Negro</p>
+                  <p class="talle">Talle: M</p>
+                  <form class="cantidad">
+                    <label>Cantidad:</label>
+                    <p>
+                      <%= producto.amount %>
+                    </p>
+
+
+                  </form>
+                  <p class="precio">$<%= producto.price %>
+                  </p>
+                </div>
+                <form class="eliminar" action="/products/remove" method="post" enctype="application/x-www-form-urlencoded">
+                  <input type="hidden" id="productId" name="productId" value="<%= producto.id %>" />
+                  <button type="submit" class="agregar-carrito-btn">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </form>
+              </div>
+
+            </div>
+
+            <% } %>
+          </div>
+              <div class="total">
+                <p>CANTIDAD DE UNIDADES: <%= locals.amountProductos %>
+                </p>
+
+                <p>PRECIO TOTAL: <%= locals.totalPrice %>
+                </p>
+
+              </div>
+      </div>
+
+      <div class="total2">
+        <p>CANTIDAD DE UNIDADES: <%= locals.amountProductos %>
+        </p>
+
+        <p>PRECIO TOTAL: <%= locals.totalPrice %>
+        </p>
+
+      </div>
+        
+    </main>
+
+    <!-- <aside class="productos-similares">
+      <h3>Productos Similares</h3>
+      <div class="productos-similares-container">
+        <button class="productos-similares-arrows">
+          <i class="fa-solid fa-angle-left productos-similares-arrow-izq"></i>
+        </button>
+        <div class="producto-similar">
+          <img src="/imgs/remera-ejemplo2.webp" class="img-producto-similar" />
+          <p class="nombre-producto-similar">REMERA ESSENTIALS LOGO PEQUEÑO</p>
+          <p class="precio-producto-similar">$7.499</p>
+        </div>
+        <div class="producto-similar">
+          <img src="/imgs/remera-ejemplo3.webp" class="img-producto-similar" />
+          <p class="nombre-producto-similar">REMERA ESSENTIALS LOGO GRANDE</p>
+          <p class="precio-producto-similar">$8.499</p>
+        </div>
+        <div class="producto-similar">
+          <img src="/imgs/remera-ejemplo4.webp" class="img-producto-similar" />
+          <p class="nombre-producto-similar">REMERA ADIDAS MANGAS LARGAS</p>
+          <p class="precio-producto-similar">$12.999</p>
+        </div>
+        <button class="productos-similares-arrows">
+          <i class="fa-solid fa-angle-right productos-similares-arrow-der"></i>
+        </button>
+      </div>
+    </aside> -->
+
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

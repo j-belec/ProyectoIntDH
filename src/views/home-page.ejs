@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="/css/home.css" rel="stylesheet" />
+    <link href="/css/header_footer.css" rel="stylesheet" />
+    <title>Home</title>
+  </head>
+
+  <body>
+    <%- include('./partials/header') %>
+
+    <div class="invisible"></div>
+
+    <main>
+      <!-- ultima coleccion -->
+      <div class="carrousel-container">
+        <div class="carrousel-container-inner">
+          <img
+            src="/images/carrousel/img1-carrousel.jpg"
+            alt="Zapatillas Nike grises"
+            class="carrousel-img"
+          />
+          <img
+            src="/images/carrousel/img2-carrousel.jpg"
+            alt="Zapatillas Adidas blancas"
+            class="carrousel-img"
+          />
+          <img
+            src="/images/carrousel/img3-carrousel.jpg"
+            alt="Zapatillas Adidas blancas"
+            class="carrousel-img"
+          />
+        </div>
+      </div>
+
+      <!-- producto destacado -->
+      <section class="productos-destacados-seccion">
+        <div class="productos-destacados-titulo-lineas">
+          <div class="linea"></div>
+          <div class="productos-destacados-titulo">Productos destacados</div>
+          <div class="linea"></div>
+        </div>
+        <div class="productos-destacados-container">
+          <% if (locals && locals.destacados && locals.destacados[1] &&
+          locals.destacados[0] ) { %> <% destacados.map(destacado => { %>
+          <div class="producto-destacado">
+            <img
+              src="/images/products/<%= destacado.image %>"
+              alt=""
+              class="producto-destacado-img"
+            />
+            <div class="producto-destacado-info-container">
+              <p class="producto-destacado-nombre"><%= destacado.name %></p>
+              <p class="producto-destacado-descripcion">
+                <%= destacado.description %>
+              </p>
+              <a href="/products/detail/<%= destacado.id %>"
+                ><button class="producto-destacado-boton">Mas Info</button></a
+              >
+            </div>
+          </div>
+          <% }) %> <% } else {%> <% if (locals && locals.user &&
+          locals.user.id_user_category == 2) { %> <% if (!locals.destacados[0]
+          && locals.destacados[1]) {%>
+          <h3>Agregar destacado 1</h3>
+          <% } else { %> <% if (locals.destacados[0] && !locals.destacados[1]) {
+          %>
+          <h3>Agregar destacado 2</h3>
+          <% } else {%>
+          <h3>Agregar destacados desde el detalle de algun producto</h3>
+          <% } %> <% } %> <% } %> <% } %>
+        </div>
+      </section>
+
+      <!-- ultimos productos -->
+
+      <section class="ultimos-productos-seccion">
+        <div class="productos-destacados-titulo-lineas">
+          <div class="linea"></div>
+          <div class="productos-destacados-titulo">Últimos productos</div>
+          <div class="linea"></div>
+        </div>
+
+        <div class="ultimos-productos-container">
+          <% if(locals && locals.products1) {%> <% products1.map((product)=> {
+          %>
+          <div class="ultimo-producto">
+            <a href="/products/detail/<%= product.id %>">
+              <img
+                src="/images/products/<%= product.image %>"
+                alt=""
+                class="ultimo-producto-img"
+              />
+            </a>
+            <div class="ultimo-producto-info-container">
+              <div class="ultimo-producto-nombre-precio">
+                <p class="ultimo-producto-nombre"><%= product.name %></p>
+                <p class="ultimo-producto-precio">$<%= product.price %></p>
+              </div>
+              <i class="fa-solid fa-cart-shopping icon-header-carrito"></i>
+            </div>
+          </div>
+          <% }) %> <%} %>
+        </div>
+      </section>
+    </main>
+
+    <%- include('./partials/footer') %>
+    <script src="/js/home.js"></script>
+  </body>
+</html>

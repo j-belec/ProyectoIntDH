@@ -1,0 +1,71 @@
+<header>
+  <div class="logo-nombre">
+    <a href="/">
+      <i class="fa-solid fa-shoe-prints logo-header"></i>
+    </a>
+    <a href="/"><p class="nombre-header">StrongStep</p></a>
+  </div>
+
+  <div class="dropdown">
+    <button
+      class="dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Zapatillas <i class="fa-solid fa-angle-down"></i>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% if(locals && locals.categories) {%> <% categories.map(category => { %>
+      <a class="dropdown-item" href="/products/productsby/<%= category.id %>"
+        ><%= category.category_name %></a
+      >
+      <% }); %>
+      <a class="dropdown-item" href="/products">Ver Todas</a>
+      <% }%>
+    </div>
+  </div>
+
+  <div class="search-container">
+    <form method="get" action="/products/search">
+      <input
+        id="search"
+        type="search"
+        placeholder="Buscar..."
+        name="search"
+        class="search"
+      />
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    </form>
+  </div>
+
+  <div class="usuario-carrito">
+    <!-- <p>Mi Usuario</p> -->
+    <% if (user) {%>
+    <a href="/profile/<%= user.id %>" style="color: black">
+      <i class="fa-solid fa-circle-user icon-header-usario"></i
+    ></a>
+    <% } else {%>
+    <a href="/login" style="color: black">
+      <i class="fa-solid fa-circle-user icon-header-usario"></i
+    ></a>
+    <% }%>
+    <a href="/carrito" style="color: black">
+      <i class="fa-solid fa-cart-shopping icon-header-carrito"></i
+    ></a>
+    <i class="fa-solid fa-bars icon-header-usario icon-hmb-menu"></i>
+  </div>
+  <div class="hmb-menu-container hmb-menu-out">
+    <h2 class="hmb-menu-titulo">Zapatillas</h2>
+    <% if(locals && locals.categories) {%> <% categories.map(category => { %>
+    <a href="/products/productsby/<%= category.id %>" class="hmb-menu-link"
+      ><i class="fa-solid fa-angle-right"></i
+    ><%= category.category_name %></a>
+    <% })} %>
+
+    <i class="fa-solid fa-xmark icon-header-usario icon-close-hmb-menu"></i>
+  </div>
+  <script src="/js/header.js"></script>
+</header>
