@@ -128,7 +128,7 @@ const productsController = {
       try {
         // await validateNewProduct(req, res, () => {});
         const product = await db.Product.create({
-          id: global.idProducto + 1,
+          // id: global.idProducto + 1,
           name: req.body.name,
           description: req.body.description,
           price: req.body.price,
@@ -136,7 +136,7 @@ const productsController = {
           banner: "BANNER.png",
           id_product_category: req.body.id_product_category,
         });
-        global.idProducto = global.idProducto + 1;
+        // global.idProducto = global.idProducto + 1;
         return res.redirect("/");
       } catch (error) {
         console.error(error);

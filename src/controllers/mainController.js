@@ -25,7 +25,7 @@ const mainController = {
         destacados.push(destacado);
       }
 
-      const products1 = products.slice(-14);
+      const products1 = products.slice(-8);
 
       return res.render("home-page", { products1: products1, destacados });
     } catch (error) {

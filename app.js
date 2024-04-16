@@ -14,8 +14,8 @@ const bodyParser = require("body-parser");
 const categories = require("./src/middlewares/categories");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-global.idProducto = 25;
-global.idUser = 3;
+// global.idProducto = 25;
+// global.idUser = 3;
 
 app.use(cors());
 app.use(methodOverride("_method"));

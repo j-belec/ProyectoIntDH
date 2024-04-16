@@ -72,7 +72,7 @@ const controller = {
         const hashedPassword = await bcrypt.hash(newUser.password, 10);
 
         const user = await db.User.create({
-          id: global.idUser + 1,
+          // id: global.idUser + 1,
           name: newUser.name,
           surname: newUser.surname,
           email: newUser.email,
@@ -81,7 +81,7 @@ const controller = {
           id_user_category: newUser.name == "admin" ? 2 : 1,
         });
 
-        global.idUser = global.idUser + 1;
+        // global.idUser = global.idUser + 1;
 
         res.redirect("/login");
       } catch (error) {
